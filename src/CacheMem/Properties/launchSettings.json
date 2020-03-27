@@ -13,8 +13,9 @@
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IIS",
+      "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "CacheMemory/GetStatus",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -25,7 +26,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:37533/"
+      "applicationUrl": "http://localhost:37532/"
     }
   }
 }

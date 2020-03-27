@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace CacheMem.Models
+namespace Test.Models
 {
     [DataContract]
     public class BaseServiceResponse
@@ -10,13 +10,6 @@ namespace CacheMem.Models
         public string Data { get; set; }
 
         [DataMember(Order = 2)]
-        public DateTime ExpireDate { get; set; }
-    }
-
-    [Serializable]
-    public class ServiceResponse
-    {
-        public string Data { get; set; }
         public DateTime ExpireDate { get; set; }
     }
 }

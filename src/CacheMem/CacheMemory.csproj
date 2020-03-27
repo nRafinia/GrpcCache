@@ -8,13 +8,11 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Providers\DbQueue.cs" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.36" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />

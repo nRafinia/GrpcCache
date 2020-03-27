@@ -15,4 +15,5 @@ namespace CacheMem.Providers
         void RemoveAll(int provider);
         bool Exists(int provider, string key);
     }
+
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace CacheMem.Models
+namespace Test.Models
 {
     [DataContract]
-    public class AddOrUpdateModel 
+    public class AddOrUpdateModel
     {
         [DataMember(Order = 1)]
         public int Provider { get; set; }

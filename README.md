@@ -7,8 +7,11 @@
   + Compile code
   + Add service to IIS or install as service (With NSSM)
   + If use as service config port number
+    > "Port": "37532"
 
 # Use Clients:
   + Add nuget
     > Install-Package nCache.Client
-  + Add Server 
+  + Add Service url in AppSettings.json    
+    >   "CacheMemory": "http://localhost:37532"
+    

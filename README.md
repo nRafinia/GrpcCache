@@ -56,8 +56,10 @@
     };
 
     var cache = CacheMemory.GetInstance("http://localhost:37532/");
+    
     cache.AddOrUpdate("TestModel", person);
     var p = cache.Get<Person>("TestModel");
+    
     Console.Write($"Age is equal={person.Age == p?.Age}");
     
  

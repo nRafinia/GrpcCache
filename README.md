@@ -3,9 +3,8 @@
   Small and lightweight cache memory service for use in distributed or separate systems with the ability to separate information from each system
 
 # Install Service:
-  + Clone project or download release version from: https://github.com/nRafinia/nCache/releases
-  + Compile code
-  + Add service to IIS or install as service (With NSSM)
+  + Clone project and compile or download release version from: https://github.com/nRafinia/nCache/releases
+  + Add **Cache Service** to IIS, install as windows service (With NSSM), ...
   + If use as service config port number
     > "Port": "37532"
 

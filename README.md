@@ -15,3 +15,35 @@
   + Add Service url in AppSettings.json    
     >   "CacheMemory": "http://localhost:37532"
     
+# Example
+
+    public class Person
+    {
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
+
+        public P2 Test { get; set; }
+    }
+
+    public class P2
+    {
+        public string Name { get; set; }
+    }
+    
+    var person = new Person()
+    {
+        Firstname = "Naser",
+        Surname = "Rafinia",
+        Age = 35,
+        Test = new P2()
+        {
+            Name = "Test"
+        }
+    };
+
+    var cache = CacheMemory.GetInstance("http://localhost:37532/");
+    cache.AddOrUpdate("TestModel", person);
+    var p = cache.Get<Person>("TestModel");
+    Console.Write($"Age is equal={person.Age == p?.Age}");
+    

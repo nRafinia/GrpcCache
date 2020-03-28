@@ -10,5 +10,6 @@
 
 # Use Clients:
   + Add nuget
-      Install-Package nCache.Client
+    Install-Package F4ST.Data  
+    Install-Package nCache.Client
   + Add Server 

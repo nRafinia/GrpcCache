@@ -10,5 +10,5 @@
 
 # Use Clients:
   + Add nuget
-    https://www.nuget.org/packages/nCache.Client
+      Install-Package nCache.Client
   + Add Server 

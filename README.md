@@ -1,6 +1,6 @@
 
 # nCache
-  Small and lightweight cache memory service for use in distributed or separate systems with the ability to separate information from each system
+  Small and lightweight GRPC cache memory service for use in distributed or separate systems with the ability to separate information from each system
 
 # Install Service:
   + Clone project and compile or download release version from: https://github.com/nRafinia/nCache/releases

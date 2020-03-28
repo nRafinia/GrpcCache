@@ -1,14 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>nCache.Client</AssemblyName>
     <RootNamespace>nCache.Client</RootNamespace>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Client for nCache https://github.com/nRafinia/nCache </Description>
+    <Product>nCache</Product>
+    <version>1.0.1</version>
+
+    <Authors>https://github.com/nRafinia</Authors>
+    <Company>https://github.com/nRafinia/nCache</Company>
+    <License>https://opensource.org/licenses/AGPL-3.0</License>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageDescription>Client for nCache https://github.com/nRafinia/nCache </PackageDescription>
+    <RepositoryUrl>https://github.com/nRafinia/nCache</RepositoryUrl>
+
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.27.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.3" />
     <PackageReference Include="protobuf-net" Version="2.4.4" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.36" />
   </ItemGroup>

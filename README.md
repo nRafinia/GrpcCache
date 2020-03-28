@@ -16,7 +16,20 @@
     >   "CacheMemory": "http://localhost:37532"
     
 # Example
+  ## ASP.Net Core    
+    public void ConfigureServices(IServiceCollection services)
+    {
+      ...
+      services.AddSingleton<ICacheMemory, CacheMemory>();
+    }
+    
+    private readonly ICacheMemory _cacheMemory;
+    public HomeController(ICacheMemory cacheMemory)
+    {
+      _cacheMemory = cacheMemory;
+    }
 
+  ## Console App
     public class Person
     {
         public string Firstname { get; set; }
@@ -47,3 +60,4 @@
     var p = cache.Get<Person>("TestModel");
     Console.Write($"Age is equal={person.Age == p?.Age}");
     
+ 

@@ -8,7 +8,7 @@
   + Add service to IIS or install as service (With NSSM)
   + If use as service config port number
 
-Clients:
-1- Add nuget
+# Use Clients:
+  + Add nuget
     https://www.nuget.org/packages/nCache.Client
-2- Add Server 
+  + Add Server 

@@ -9,7 +9,7 @@
   + If use as service config port number
     > "Port": "37532"
 
-# Use Clients:
+# Use in Clients:
   + Add nuget
     > Install-Package nCache.Client
   + Add Service url in AppSettings.json    

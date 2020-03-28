@@ -1,4 +1,4 @@
-﻿namespace CacheMem.Providers
+﻿namespace nCache.Client
 {
     public enum CacheTime
     {

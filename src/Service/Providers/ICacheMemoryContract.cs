@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using CacheMem.Models;
 using ProtoBuf;
+using nCache.Models;
 
-namespace CacheMem.Providers
+namespace nCache.Service.Providers
 {
     [ServiceContract(Name = "CacheMemory")]
     public interface ICacheMemoryContract

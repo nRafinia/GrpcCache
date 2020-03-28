@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using nCache.Models;
 
-namespace Test.Models
+namespace nCache
 {
     [ServiceContract(Name = "CacheMemory")]
     public interface ICacheMemoryContract

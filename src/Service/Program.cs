@@ -1,40 +1,45 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
+using System.Net;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 
-namespace CacheMem
+namespace nCache.Service
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var port = 0;
+            if (!InsideIIS)
+            {
+                var builder = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json");
+                var config = builder.Build();
+                port = Convert.ToInt32(config["Port"] ?? "37532");
+            }
+
+            CreateHostBuilder(args, port).Build().Run();
         }
 
-        /*public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.ListenLocalhost(37533,
-                            listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
-                    });
-                    webBuilder.UseStartup<Startup>();
-                });*/
+        public static IWebHostBuilder CreateHostBuilder(string[] args, int port)
+        {
 
-        public static IWebHostBuilder CreateHostBuilder(string[] args) =>
-            WebHost
+            return WebHost
                 .CreateDefaultBuilder(args)
                 .ConfigureKestrel(options =>
                 {
-                    options.Listen(IPAddress.Any, 37532, listenOptions =>
+                    if (!InsideIIS)
                     {
-                        listenOptions.Protocols = HttpProtocols.Http2;
-                    });
+                        options.ListenAnyIP(port, listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
+                    }
                 })
                 .UseStartup<Startup>();
+        }
+
+        private static bool InsideIIS =>
+            System.Environment.GetEnvironmentVariable("APP_POOL_ID") != null;
     }
 }

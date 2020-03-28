@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CacheMem.Models;
+using nCache.Models;
 
-namespace CacheMem.Providers
+namespace nCache.Service.Providers
 {
     public interface ICacheMemory
     {

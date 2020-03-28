@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Test.Models
+namespace nCache.Models
 {
     [DataContract]
-    public class AddOrUpdateModel
+    public class AddOrUpdateModel 
     {
         [DataMember(Order = 1)]
         public int Provider { get; set; }
@@ -13,7 +13,7 @@ namespace Test.Models
         public string Key { get; set; }
 
         [DataMember(Order = 3)]
-        public string Item { get; set; }
+        public byte[] Data { get; set; }
 
         [DataMember(Order = 4)]
         public DateTime ExpireDate { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace CacheMem.Extensions
+namespace nCache.Service.Extensions
 {
     public static class CacheMemoryExt
     {

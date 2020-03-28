@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text.Json;
-using CacheMem.Extensions;
-using CacheMem.Models;
+using nCache.Service.Extensions;
 using NLog;
+using nCache.Models;
+using ProtoBuf;
 
-namespace CacheMem.Providers
+namespace nCache.Service.Providers
 {
     public class CacheMemoryContract : ICacheMemoryContract
     {
@@ -16,7 +17,7 @@ namespace CacheMem.Providers
         #region Services
         public void AddOrUpdate(AddOrUpdateModel model)
         {
-            if (model?.Item == null)
+            if (model?.Data == null)
                 return;
 
             try
@@ -24,7 +25,7 @@ namespace CacheMem.Providers
                 model.Key = $"{model.Provider}-{model.Key}";
                 var value = new ServiceResponse()
                 {
-                    Data = model.Item,
+                    Data = model.Data,
                     ExpireDate = model.ExpireDate
                 };
 
@@ -65,39 +66,30 @@ namespace CacheMem.Providers
 
         public BaseServiceResponse GetAll(BaseModel model)
         {
-            IEnumerable<ServiceResponse> res = null;
             try
             {
                 model.Key = $"{model.Provider}-{model.Key}";
 
-                res = CacheMem.GetAll(model.Provider, model.Key);
-                if (res != null)
+                var res = CacheMem.GetAll(model.Provider, model.Key) as ServiceResponse[] ?? new ServiceResponse[0];
+
+                if (!res.Any()) 
+                    return new BaseServiceResponse() {Data = null};
+
+                var dt = res.Select(r => r?.Data);
+
+                using var memoryStream = new MemoryStream();
+                Serializer.Serialize(memoryStream, dt);
+                return new BaseServiceResponse()
                 {
-                    //var r = JsonConvert.DeserializeObject<ServiceResponse>(res);
-                    var raRes = res as ServiceResponse[] ?? res.ToArray();
-                    var dt = raRes.Select(r => r?.Data);
-
-                    return raRes.Any()
-                        ? new BaseServiceResponse()
-                        {
-                            Data = JsonSerializer.Serialize(dt)
-                        }
-                        : new BaseServiceResponse() { Data = null };
-                }
-
-
+                    Data = memoryStream.ToArray()
+                };  
             }
             catch (Exception e)
             {
                 ErrorLog.Error(e);
             }
 
-            return res == null
-                ? new BaseServiceResponse() { Data = null }
-                : new BaseServiceResponse()
-                {
-                    Data = JsonSerializer.Serialize(res.Select(r => r.Data))
-                };
+            return new BaseServiceResponse() { Data = null };
         }
 
         public void Remove(BaseModel model)

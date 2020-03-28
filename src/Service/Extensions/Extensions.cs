@@ -1,6 +1,6 @@
-﻿using CacheMem.Models;
+﻿using nCache.Models;
 
-namespace CacheMem.Extensions
+namespace nCache.Service.Extensions
 {
     public static class Extensions
     {

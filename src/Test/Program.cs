@@ -1,48 +1,60 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using F4ST.Common.Extensions;
-using F4ST.Common.Tools;
-using Grpc.Net.Client;
-using Newtonsoft.Json;
-using ProtoBuf.Grpc.Client;
-using RestSharp;
-using Test.Models;
+using nCache.Client;
 
 namespace Test
 {
     class Program
     {
-        static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            var m = new TestModel()
-            {
-                Id = 10,
-                Name = "Test"
-            };
+            var bDay = new DateTime(1984, 8, 28);
+            var age = DateTime.Now.Year - bDay.Year;
+            if (bDay > DateTime.Now.AddYears(-age))
+                age--;
 
-            var data = new AddOrUpdateModel()
+            var person = new Person()
             {
-                Key = "Test_Object",
-                Item = JsonConvert.SerializeObject(m).Base64Encode(),
-                ExpireDate = DateTime.Now.AddHours(1),
-                Provider = 1
-            };
-
-            GrpcClientFactory.AllowUnencryptedHttp2 = true;
-            using (var channel = GrpcChannel.ForAddress("http://127.0.0.1:37532"))
-            {
-                var cache = channel.CreateGrpcService<ICacheMemoryContract>();
-                cache.AddOrUpdate(data);
-                var rData = cache.Get(new BaseModel()
+                Firstname = "Naser",
+                Surname = "Rafinia",
+                Age = age,
+                Test = new P2()
                 {
-                    Key = "Test_Object",
-                    Provider = 1
-                });
-                /*cData = JsonConvert.DeserializeObject<TestModel>(rData.Data.Base64Decode());
-                Console.WriteLine(JsonConvert.SerializeObject(cData, Formatting.Indented));*/
+                    Name = "Test"
+                }
+            };
+
+            var cache = CacheMemory.GetInstance("http://localhost:37532/");
+            cache.AddOrUpdate("TestModel", person);
+
+            Person p = null;
+            for (var i = 0; i < 10; i++)
+            {
+                p = cache.Get<Person>("TestModel");
             }
-            
+
+            Console.Write($"Age is equal={person.Age == p?.Age}");
             Console.ReadKey();
         }
+
+    }
+
+    //[ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+    public class Person
+    {
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
+
+        public P2 Test { get; set; }
+    }
+
+    public class P2
+    {
+        public string Name { get; set; }
     }
 }

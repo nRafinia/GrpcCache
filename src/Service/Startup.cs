@@ -1,11 +1,11 @@
-﻿using CacheMem.Providers;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Grpc.Server;
+using nCache.Service.Providers;
 
-namespace CacheMem
+namespace nCache.Service
 {
     public class Startup
     {

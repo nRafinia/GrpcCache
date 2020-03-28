@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>nCache.Client</name>
+    </assembly>
+    <members>
+        <member name="T:nCache.Client.CacheMemory">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.Get``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.GetAll``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.AddOrUpdate``1(System.String,``0,nCache.Client.CacheTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.AddOrUpdate``1(System.String,``0,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.Remove``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.RemoveAll``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.RemoveAll(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:nCache.Client.CacheMemory.Exists``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="F:nCache.Client.CacheTime.Tiny">
+            <summary>
+            5 Minutes
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.Little">
+            <summary>
+            30 Minutes
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.VeryLow">
+            <summary>
+            1 Hour
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.Low">
+            <summary>
+            2 Hours
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.Normal">
+            <summary>
+            4 Hours
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.High">
+            <summary>
+            8 Hours
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.VeryHigh">
+            <summary>
+            12 Hours
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.Day">
+            <summary>
+            24 Hours
+            </summary>
+        </member>
+        <member name="F:nCache.Client.CacheTime.Minute1">
+            <summary>
+            1 Minute
+            </summary>
+        </member>
+        <member name="T:nCache.Client.ICacheMemory">
+            <summary>
+            nCache client class<br/>
+            Server url must added in AppSetting.json <example>"CacheMemory":"http://localhost:8050/"</example>
+            </summary>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.AddOrUpdate``1(System.String,``0,nCache.Client.CacheTime,System.Int32)">
+            <summary>
+            Add item to cache server
+            </summary>
+            <typeparam name="T">Item class type</typeparam>
+            <param name="key">Key of item, Saved format is <code>typeof(T).FullName:Key</code></param>
+            <param name="data">data to add</param>
+            <param name="time">Cache storage time</param>
+            <param name="provider">Provider id to separate values in different systems</param>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.AddOrUpdate``1(System.String,``0,System.Int32,System.Int32)">
+            <summary>
+            Add item to cache server
+            </summary>
+            <typeparam name="T">Item class type</typeparam>
+            <param name="key">Key of item, Saved format is <code>typeof(T).FullName:Key</code></param>
+            <param name="data">data to add</param>
+            <param name="time">Cache storage time</param>
+            <param name="provider">Provider id to separate values in different systems</param>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.Get``1(System.String,System.Int32)">
+            <summary>
+            Get stored item from cache
+            </summary>
+            <typeparam name="T">Item class type for cast to</typeparam>
+            <param name="key">Key of item, Saved format is <code>typeof(T).FullName:Key</code></param>
+            <param name="provider">Provider id to separate values in different systems</param>
+            <returns>Returns a value if it exists, otherwise null is returned</returns>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.GetAll``1(System.String,System.Int32)">
+            <summary>
+            Get all items started with key
+            </summary>
+            <typeparam name="T">Item class type for cast to</typeparam>
+            <param name="key">Start key of item</param>
+            <param name="provider">Provider id to separate values in different systems</param>
+            <returns>Return list of exists items</returns>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.Remove``1(System.String,System.Int32)">
+            <summary>
+            Remove item from cache
+            </summary>
+            <typeparam name="T">Item class type for cast to</typeparam>
+            <param name="key">Key of item, Saved format is <code>typeof(T).FullName:Key</code></param>
+            <param name="provider">Provider id to separate values in different systems</param>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.RemoveAll``1(System.String,System.Int32)">
+            <summary>
+            Remove all items started with key
+            </summary>
+            <typeparam name="T">Item class type</typeparam>
+            <param name="startKey">Start key of item</param>
+            <param name="provider">Provider id to separate values in different systems</param>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.RemoveAll(System.Int32)">
+            <summary>
+            Remove all items
+            </summary>
+            <param name="provider">Provider id to separate values in different systems</param>
+        </member>
+        <member name="M:nCache.Client.ICacheMemory.Exists``1(System.String,System.Int32)">
+            <summary>
+            Check exists item is in cache
+            </summary>
+            <typeparam name="T">Item class type</typeparam>
+            <param name="key">Key of item, Saved format is <code>typeof(T).FullName:Key</code></param>
+            <param name="provider">Provider id to separate values in different systems</param>
+            <returns>If exists return True</returns>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.Build``1">
+            <summary>
+            Build the ProtoBuf serializer from the generic <see cref="T:System.Type">type</see>.
+            </summary>
+            <typeparam name="T">The type of build the serializer for.</typeparam>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.Build``1(``0)">
+            <summary>
+            Build the ProtoBuf serializer from the data's <see cref="T:System.Type">type</see>.
+            </summary>
+            <typeparam name="T">The type of build the serializer for.</typeparam>
+            <param name="data">The data who's type a serializer will be made.</param>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.Build(System.Type)">
+            <summary>
+            Build the ProtoBuf serializer for the <see cref="T:System.Type">type</see>.
+            </summary>
+            <param name="type">The type of build the serializer for.</param>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.GetFields(System.Type)">
+            <summary>
+            Gets the fields for a type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.BuildBaseClasses(System.Type)">
+            <summary>
+            Builds the base class serializers for a type.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:nCache.Client.SerializerBuilder.BuildGenerics(System.Type)">
+            <summary>
+            Builds the serializers for the generic parameters for a given type.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+    </members>
+</doc>

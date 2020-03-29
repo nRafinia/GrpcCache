@@ -77,6 +77,11 @@ namespace nCache.Client
                     Provider = provider
                 });
 
+                if (items.Data == null)
+                {
+                    return new List<T>();
+                }
+
                 using var memoryStream = new MemoryStream(items.Data);
                 res = Serializer.Deserialize<List<T>>(memoryStream);
             }
@@ -85,7 +90,7 @@ namespace nCache.Client
                 //
             }
 
-            return res;
+            return res ?? new List<T>();
         }
 
         /// <inheritdoc />
@@ -131,6 +136,7 @@ namespace nCache.Client
         {
             try
             {
+                key = GetKeyName(key, typeof(T).FullName);
                 _cache.Remove(new BaseModel()
                 {
                     Key = key,
@@ -176,12 +182,18 @@ namespace nCache.Client
         /// <inheritdoc />
         public bool Exists<T>(string key, int provider = 0)
         {
+            key = GetKeyName(key, typeof(T).FullName);
             var res = _cache.Exists(new BaseModel()
             {
                 Key = key,
                 Provider = provider
             });
             return res.Item;
+        }
+
+        public Dictionary<string, string> GetStatus()
+        {
+            return _cache.GetStatus();
         }
 
         #region Private methods

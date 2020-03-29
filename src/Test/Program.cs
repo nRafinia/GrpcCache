@@ -17,25 +17,43 @@ namespace Test
             if (bDay > DateTime.Now.AddYears(-age))
                 age--;
 
+            var test = new P2()
+            {
+                Name = "Test"
+            };
             var person = new Person()
             {
                 Firstname = "Naser",
                 Surname = "Rafinia",
                 Age = age,
-                Test = new P2()
-                {
-                    Name = "Test"
-                }
+                Test = test
             };
 
             var cache = CacheMemory.GetInstance("http://localhost:37532/");
             cache.AddOrUpdate("TestModel", person);
+            cache.AddOrUpdate("TestModel1", person);
+            cache.AddOrUpdate("Test", test);
 
-            Person p = null;
-            for (var i = 0; i < 10; i++)
-            {
-                p = cache.Get<Person>("TestModel");
-            }
+            var status = cache.GetStatus();
+
+            var p = cache.Get<Person>("TestModel");
+            var items = cache.GetAll<Person>("");
+            var exists = cache.Exists<Person>("TestModel");
+            
+            cache.Remove<Person>("TestModel");
+            items = cache.GetAll<Person>("");
+            exists = cache.Exists<Person>("TestModel");
+            
+            cache.RemoveAll<Person>();
+            items = cache.GetAll<Person>("");
+
+            status = cache.GetStatus();
+
+            var t = cache.Get<P2>("Test");
+            cache.RemoveAll();
+            exists = cache.Exists<P2>("Test");
+
+            status = cache.GetStatus();
 
             Console.Write($"Age is equal={person.Age == p?.Age}");
             Console.ReadKey();

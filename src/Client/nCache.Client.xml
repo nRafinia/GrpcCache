@@ -151,6 +151,12 @@
             <param name="provider">Provider id to separate values in different systems</param>
             <returns>If exists return True</returns>
         </member>
+        <member name="M:nCache.Client.ICacheMemory.GetStatus">
+            <summary>
+            Get status of cached items
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:nCache.Client.SerializerBuilder.Build``1">
             <summary>
             Build the ProtoBuf serializer from the generic <see cref="T:System.Type">type</see>.

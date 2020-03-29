@@ -34,7 +34,8 @@ namespace nCache.Service.Providers
             var res = cache
                 .ToList()
                 .Where(k => k.Key.StartsWith(startKey))
-                .Select(k => k.Value as ServiceResponse);
+                .Select(k => k.Value as ServiceResponse)
+                .ToArray();
 
             return res.Where(k => k?.Data != null);
         }

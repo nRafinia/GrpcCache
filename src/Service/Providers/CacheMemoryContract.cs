@@ -70,7 +70,7 @@ namespace nCache.Service.Providers
             {
                 model.Key = $"{model.Provider}-{model.Key}";
 
-                var res = CacheMem.GetAll(model.Provider, model.Key) as ServiceResponse[] ?? new ServiceResponse[0];
+                var res = CacheMem.GetAll(model.Provider, model.Key) ?? new ServiceResponse[0];
 
                 if (!res.Any()) 
                     return new BaseServiceResponse() {Data = null};
@@ -135,6 +135,8 @@ namespace nCache.Service.Providers
             var res = false;
             try
             {
+                model.Key = $"{model.Provider}-{model.Key}";
+
                 res = CacheMem.Exists(model.Provider, model.Key);
                 if (res)
                     return new StructModel<bool>() { Item = true };

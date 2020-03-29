@@ -77,5 +77,11 @@ namespace nCache.Client
         /// <param name="provider">Provider id to separate values in different systems</param>
         /// <returns>If exists return True</returns>
         bool Exists<T>(string key, int provider = 0);
+
+        /// <summary>
+        /// Get status of cached items
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string> GetStatus();
     }
 }

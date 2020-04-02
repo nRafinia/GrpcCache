@@ -2,12 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>GrpcCache.Service</RootNamespace>
-    <AssemblyName>GrpcCache.Service</AssemblyName>
+    <AssemblyName>GrpcCache</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <PackageId>GrpcCache.Service</PackageId>
   </PropertyGroup>
   

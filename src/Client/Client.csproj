@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>GrpcCache.Client</AssemblyName>
+    <AssemblyName>GrpcCache</AssemblyName>
     <RootNamespace>GrpcCache.Client</RootNamespace>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Client for GrpcCache https://github.com/nRafinia/GrpcCache </Description>
     <Product>GrpcCache</Product>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <Authors>https://github.com/nRafinia</Authors>
     <Company>https://github.com/nRafinia/GrpcCache</Company>

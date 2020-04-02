@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using ProtoBuf.Meta;
 
-namespace nCache.Client
+namespace GrpcCache.Client
 {
     internal static class SerializerBuilder
     {

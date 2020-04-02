@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using nCache.Client;
+using GrpcCache.Client;
 
 namespace Test
 {

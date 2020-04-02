@@ -1,6 +1,6 @@
-﻿using nCache.Models;
+﻿using GrpcCache.Models;
 
-namespace nCache.Service.Extensions
+namespace GrpcCache.Service.Extensions
 {
     public static class Extensions
     {

@@ -7,10 +7,10 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Configuration;
 using ProtoBuf.Grpc.Client;
-using nCache.Models;
+using GrpcCache.Models;
 using ProtoBuf;
 
-namespace nCache.Client
+namespace GrpcCache.Client
 {
     /// <inheritdoc />
     public class CacheMemory : ICacheMemory

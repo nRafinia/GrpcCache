@@ -2,25 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>nCache.Client</AssemblyName>
-    <RootNamespace>nCache.Client</RootNamespace>
+    <AssemblyName>GrpcCache.Client</AssemblyName>
+    <RootNamespace>GrpcCache.Client</RootNamespace>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Client for nCache https://github.com/nRafinia/nCache </Description>
-    <Product>nCache</Product>
+    <Description>Client for GrpcCache https://github.com/nRafinia/GrpcCache </Description>
+    <Product>GrpcCache</Product>
     <version>1.0.1</version>
 
     <Authors>https://github.com/nRafinia</Authors>
-    <Company>https://github.com/nRafinia/nCache</Company>
+    <Company>https://github.com/nRafinia/GrpcCache</Company>
     <License>https://opensource.org/licenses/AGPL-3.0</License>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageDescription>Client for nCache https://github.com/nRafinia/nCache </PackageDescription>
-    <RepositoryUrl>https://github.com/nRafinia/nCache</RepositoryUrl>
+    <PackageDescription>Client for GrpcCache https://github.com/nRafinia/GrpcCache </PackageDescription>
+    <RepositoryUrl>https://github.com/nRafinia/GrpcCache</RepositoryUrl>
 
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>H:\Projects\GitHub\nRafinia\CacheMem\src\Client\nCache.Client.xml</DocumentationFile>
+    <DocumentationFile>..\Client\GrpcCache.Client.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

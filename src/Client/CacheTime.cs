@@ -1,4 +1,4 @@
-﻿namespace nCache.Client
+﻿namespace GrpcCache.Client
 {
     public enum CacheTime
     {

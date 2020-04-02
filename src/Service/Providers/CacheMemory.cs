@@ -2,11 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using nCache.Service.Extensions;
+using GrpcCache.Service.Extensions;
 using Microsoft.Extensions.Caching.Memory;
-using nCache.Models;
+using GrpcCache.Models;
 
-namespace nCache.Service.Providers
+namespace GrpcCache.Service.Providers
 {
     public class CacheMemory : ICacheMemory
     {

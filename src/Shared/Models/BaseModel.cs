@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace nCache.Models
+namespace GrpcCache.Models
 {
     [DataContract]
     public class BaseModel

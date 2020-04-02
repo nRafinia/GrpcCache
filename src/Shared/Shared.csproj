@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>nCache</AssemblyName>
-    <RootNamespace>nCache</RootNamespace>
+    <AssemblyName>GrpcCache</AssemblyName>
+    <RootNamespace>GrpcCache</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

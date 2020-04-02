@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace nCache.Client
+namespace GrpcCache.Client
 {
     /// <summary>
-    /// nCache client class<br/>
+    /// GrpcCache client class<br/>
     /// Server url must added in AppSetting.json <example>"CacheMemory":"http://localhost:8050/"</example>
     /// </summary>
     public interface ICacheMemory

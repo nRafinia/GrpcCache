@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using nCache.Service.Extensions;
+using GrpcCache.Service.Extensions;
 using NLog;
-using nCache.Models;
+using GrpcCache.Models;
 using ProtoBuf;
 
-namespace nCache.Service.Providers
+namespace GrpcCache.Service.Providers
 {
     public class CacheMemoryContract : ICacheMemoryContract
     {

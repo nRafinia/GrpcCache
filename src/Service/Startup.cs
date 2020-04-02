@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Grpc.Server;
-using nCache.Service.Providers;
+using GrpcCache.Service.Providers;
 
-namespace nCache.Service
+namespace GrpcCache.Service
 {
     public class Startup
     {

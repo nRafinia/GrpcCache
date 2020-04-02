@@ -4,7 +4,7 @@
 
 # Install Service:
   + Clone project and compile or download release version from: https://github.com/nRafinia/GrpcCache/releases
-  + Add **Cache Service** to IIS, install as windows service (With NSSM), ...
+  + Add **Cache Service** to IIS or run InstallService.bat as administrator
   + If use as service config port number
     > "Port": "37532"
 

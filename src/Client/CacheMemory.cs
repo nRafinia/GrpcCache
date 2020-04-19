@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using ProtoBuf.Grpc.Client;
 using GrpcCache.Models;
 using ProtoBuf;
+using ProtoBuf.Meta;
 
 namespace GrpcCache.Client
 {
@@ -205,7 +206,7 @@ namespace GrpcCache.Client
 
         private void GetCache(string cacheUrl)
         {
-            var channel = GrpcChannel.ForAddress(cacheUrl);
+            var channel = GrpcChannel.ForAddress(cacheUrl,new GrpcChannelOptions());
             _cache = channel.CreateGrpcService<ICacheMemoryContract>();
         }
 

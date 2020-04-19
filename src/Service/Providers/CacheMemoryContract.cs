@@ -11,8 +11,13 @@ namespace GrpcCache.Service.Providers
 {
     public class CacheMemoryContract : ICacheMemoryContract
     {
-        private static readonly CacheMemory CacheMem = new CacheMemory();
+        private readonly ICacheMemory _cacheMem;
         private static readonly Logger ErrorLog = LogManager.GetLogger("ExceptionService");
+
+        public CacheMemoryContract(ICacheMemory cacheMemory)
+        {
+            _cacheMem = cacheMemory;
+        }
 
         #region Services
         public void AddOrUpdate(AddOrUpdateModel model)
@@ -29,7 +34,7 @@ namespace GrpcCache.Service.Providers
                     ExpireDate = model.ExpireDate
                 };
 
-                CacheMem.AddOrUpdate(model.Provider, model.Key, value, model.ExpireDate);
+                _cacheMem.AddOrUpdate(model.Provider, model.Key, value, model.ExpireDate);
             }
             catch (Exception e)
             {
@@ -44,7 +49,7 @@ namespace GrpcCache.Service.Providers
             {
                 model.Key = $"{model.Provider}-{model.Key}";
 
-                res = CacheMem.Get(model.Provider, model.Key);
+                res = _cacheMem.Get(model.Provider, model.Key);
                 if (res != null)
                 {
                     //var r = JsonConvert.DeserializeObject<ServiceResponse>(res);
@@ -70,7 +75,7 @@ namespace GrpcCache.Service.Providers
             {
                 model.Key = $"{model.Provider}-{model.Key}";
 
-                var res = CacheMem.GetAll(model.Provider, model.Key) ?? new ServiceResponse[0];
+                var res = _cacheMem.GetAll(model.Provider, model.Key) ?? new ServiceResponse[0];
 
                 if (!res.Any()) 
                     return new BaseServiceResponse() {Data = null};
@@ -97,7 +102,7 @@ namespace GrpcCache.Service.Providers
             try
             {
                 model.Key = $"{model.Provider}-{model.Key}";
-                CacheMem.Remove(model.Provider, model.Key);
+                _cacheMem.Remove(model.Provider, model.Key);
             }
             catch (Exception e)
             {
@@ -110,7 +115,7 @@ namespace GrpcCache.Service.Providers
             try
             {
                 model.Key = $"{model.Provider}-{model.Key}";
-                CacheMem.RemoveAll(model.Provider, model.Key);
+                _cacheMem.RemoveAll(model.Provider, model.Key);
             }
             catch (Exception e)
             {
@@ -122,7 +127,7 @@ namespace GrpcCache.Service.Providers
         {
             try
             {
-                CacheMem.RemoveAll(provider.Item);
+                _cacheMem.RemoveAll(provider.Item);
             }
             catch (Exception e)
             {
@@ -137,7 +142,7 @@ namespace GrpcCache.Service.Providers
             {
                 model.Key = $"{model.Provider}-{model.Key}";
 
-                res = CacheMem.Exists(model.Provider, model.Key);
+                res = _cacheMem.Exists(model.Provider, model.Key);
                 if (res)
                     return new StructModel<bool>() { Item = true };
 
@@ -157,7 +162,7 @@ namespace GrpcCache.Service.Providers
 
         public Dictionary<string, string> GetStatus()
         {
-            var cLength = CacheMem.CacheLength;
+            var cLength = _cacheMem.CacheLength;
             var res = cLength.ToDictionary(c => $"Provider {c.Key}", c => c.Value.ToString());
 
             return res;

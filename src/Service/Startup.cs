@@ -21,6 +21,8 @@ namespace GrpcCache.Service
         {
             services.AddControllers();
 
+            services.AddSingleton<ICacheMemory, CacheMemory>();
+
             services.AddCodeFirstGrpc(config =>
             {
                 config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;

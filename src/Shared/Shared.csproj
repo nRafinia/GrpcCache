@@ -4,6 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>GrpcCache.Shared</AssemblyName>
     <RootNamespace>GrpcCache</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>https://github.com/nRafinia</Authors>
+    <Company>https://github.com/nRafinia/GrpcCache</Company>
+    <Product>GrpcCache</Product>
+    <Description>Shared for GrpcCache https://github.com/nRafinia/GrpcCache</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/nRafinia/GrpcCache</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

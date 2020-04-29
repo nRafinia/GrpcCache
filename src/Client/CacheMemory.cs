@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
@@ -10,6 +11,7 @@ using ProtoBuf.Grpc.Client;
 using GrpcCache.Models;
 using ProtoBuf;
 using ProtoBuf.Meta;
+using Utf8Json;
 
 namespace GrpcCache.Client
 {
@@ -54,8 +56,9 @@ namespace GrpcCache.Client
                 if (item == null || item.ExpireDate < DateTime.Now)
                     return default;
 
-                using var memoryStream = new MemoryStream(item.Data);
-                res = Serializer.Deserialize<T>(memoryStream);
+                /*using var memoryStream = new MemoryStream(item.Data);
+                res = Serializer.Deserialize<T>(memoryStream);*/
+                res = JsonSerializer.Deserialize<T>(item.Data);
             }
             catch
             {
@@ -83,8 +86,10 @@ namespace GrpcCache.Client
                     return new List<T>();
                 }
 
-                using var memoryStream = new MemoryStream(items.Data);
-                res = Serializer.Deserialize<List<T>>(memoryStream);
+                /*using var memoryStream = new MemoryStream(items.Data);
+                res = Serializer.Deserialize<List<T>>(memoryStream);*/
+
+                res = items.Data.Select(t => JsonSerializer.Deserialize<T>(t));
             }
             catch
             {
@@ -109,12 +114,13 @@ namespace GrpcCache.Client
                     return;
 
                 byte[] dataBytes = null;
-                SerializerBuilder.Build(data);
+                /*SerializerBuilder.Build(data);
                 using (var memoryStream = new MemoryStream())
                 {
                     Serializer.Serialize(memoryStream, data);
                     dataBytes = memoryStream.ToArray();
-                }
+                }*/
+                dataBytes = JsonSerializer.Serialize(data);
 
                 key = GetKeyName(key, typeof(T).FullName);
                 _cache.AddOrUpdate(new AddOrUpdateModel()
@@ -206,7 +212,7 @@ namespace GrpcCache.Client
 
         private void GetCache(string cacheUrl)
         {
-            var channel = GrpcChannel.ForAddress(cacheUrl,new GrpcChannelOptions());
+            var channel = GrpcChannel.ForAddress(cacheUrl, new GrpcChannelOptions());
             _cache = channel.CreateGrpcService<ICacheMemoryContract>();
         }
 

@@ -9,7 +9,7 @@ namespace GrpcCache
     {
         void AddOrUpdate(AddOrUpdateModel model);
         BaseServiceResponse Get(BaseModel model);
-        BaseServiceResponse GetAll(BaseModel model);
+        GetAllServiceResponse GetAll(BaseModel model);
         void Remove(BaseModel model);
         void RemoveAllWithKey(BaseModel model);
         void RemoveAll(StructModel<int> provider);

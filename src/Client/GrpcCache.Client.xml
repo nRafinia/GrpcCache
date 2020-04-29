@@ -157,43 +157,5 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.Build``1">
-            <summary>
-            Build the ProtoBuf serializer from the generic <see cref="T:System.Type">type</see>.
-            </summary>
-            <typeparam name="T">The type of build the serializer for.</typeparam>
-        </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.Build``1(``0)">
-            <summary>
-            Build the ProtoBuf serializer from the data's <see cref="T:System.Type">type</see>.
-            </summary>
-            <typeparam name="T">The type of build the serializer for.</typeparam>
-            <param name="data">The data who's type a serializer will be made.</param>
-        </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.Build(System.Type)">
-            <summary>
-            Build the ProtoBuf serializer for the <see cref="T:System.Type">type</see>.
-            </summary>
-            <param name="type">The type of build the serializer for.</param>
-        </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.GetFields(System.Type)">
-            <summary>
-            Gets the fields for a type.
-            </summary>
-            <param name="type">The type.</param>
-            <returns></returns>
-        </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.BuildBaseClasses(System.Type)">
-            <summary>
-            Builds the base class serializers for a type.
-            </summary>
-            <param name="type">The type.</param>
-        </member>
-        <member name="M:GrpcCache.Client.SerializerBuilder.BuildGenerics(System.Type)">
-            <summary>
-            Builds the serializers for the generic parameters for a given type.
-            </summary>
-            <param name="type">The type.</param>
-        </member>
     </members>
 </doc>

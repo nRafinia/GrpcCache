@@ -6,6 +6,7 @@ using GrpcCache.Service.Extensions;
 using NLog;
 using GrpcCache.Models;
 using ProtoBuf;
+using Utf8Json;
 
 namespace GrpcCache.Service.Providers
 {
@@ -69,7 +70,7 @@ namespace GrpcCache.Service.Providers
                 : res.ToBase(); //JsonConvert.DeserializeObject<ServiceResponse>(res);
         }
 
-        public BaseServiceResponse GetAll(BaseModel model)
+        public GetAllServiceResponse GetAll(BaseModel model)
         {
             try
             {
@@ -77,24 +78,30 @@ namespace GrpcCache.Service.Providers
 
                 var res = _cacheMem.GetAll(model.Provider, model.Key) ?? new ServiceResponse[0];
 
-                if (!res.Any()) 
-                    return new BaseServiceResponse() {Data = null};
+                if (!res.Any())
+                    return new GetAllServiceResponse() { Data = null };
 
                 var dt = res.Select(r => r?.Data);
 
-                using var memoryStream = new MemoryStream();
+                /*using var memoryStream = new MemoryStream();
                 Serializer.Serialize(memoryStream, dt);
                 return new BaseServiceResponse()
                 {
                     Data = memoryStream.ToArray()
-                };  
+                };  */
+
+                return new GetAllServiceResponse()
+                {
+                    Data = dt,
+                    ExpireDate = DateTime.Now.AddYears(1)
+                };
             }
             catch (Exception e)
             {
                 ErrorLog.Error(e);
             }
 
-            return new BaseServiceResponse() { Data = null };
+            return new GetAllServiceResponse() { Data = null };
         }
 
         public void Remove(BaseModel model)

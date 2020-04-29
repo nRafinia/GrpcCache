@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GrpcCache.Models
@@ -13,10 +14,23 @@ namespace GrpcCache.Models
         public DateTime ExpireDate { get; set; }
     }
 
-    [Serializable]
+    [DataContract]
     public class ServiceResponse
     {
+        [DataMember(Order = 1)]
         public byte[] Data { get; set; }
+
+        [DataMember(Order = 2)]
+        public DateTime ExpireDate { get; set; }
+    }    
+    
+    [DataContract]
+    public class GetAllServiceResponse
+    {
+        [DataMember(Order = 1)]
+        public IEnumerable<byte[]> Data { get; set; }
+
+        [DataMember(Order = 2)]
         public DateTime ExpireDate { get; set; }
     }
 }

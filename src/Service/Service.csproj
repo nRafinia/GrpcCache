@@ -7,7 +7,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <PackageId>GrpcCache.Service</PackageId>
   </PropertyGroup>
   

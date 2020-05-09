@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Client for GrpcCache https://github.com/nRafinia/GrpcCache </Description>
     <Product>GrpcCache</Product>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <Authors>https://github.com/nRafinia</Authors>
     <Company>https://github.com/nRafinia/GrpcCache</Company>

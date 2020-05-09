@@ -11,6 +11,7 @@
     <Description>Shared for GrpcCache https://github.com/nRafinia/GrpcCache</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/nRafinia/GrpcCache</RepositoryUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
